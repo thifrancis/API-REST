@@ -4,7 +4,7 @@ exports.getProdutos =  (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if(error) { return res.status(500).send({error: error})}
         conn.query(
-            'SELECT * FROM ecommerce.produtos;',
+            'SELECT * FROM produtos;',
             (error, result, fields) => {
                 if(error) { return res.status(500).send({error: error})} 
                 const response = {
@@ -80,7 +80,7 @@ exports.postProduto = (req, res, next) => {
         mysql.getConnection((error, conn) => {
             if(error) { return res.status(500).send({error: error})}
             conn.query(
-                'SELECT * FROM ecommerce.produtos WHERE id_produtos=?;',
+                'SELECT * FROM produtos WHERE id_produtos=?;',
                 [req.params.id_produtos],
                 (error, result, fields) => {
                     if(error) { return res.status(500).send({error: error})}  
